@@ -43,6 +43,7 @@
               <template v-if="field.visible">
                 <template v-if="isFieldComponent(field.name)">
                   <component :is="field.name"
+                    :data-title="field.title"
                     :key="fieldIndex"
                     :row-data="item" :row-index="itemIndex" :row-field="field"
                     :vuetable="vuetable"
@@ -53,6 +54,7 @@
                 </template>
                 <template v-else-if="isFieldSlot(field.name)">
                   <td :class="bodyClass('vuetable-slot', field)"
+                    :data-title="field.title"
                     :key="fieldIndex"
                     :style="{width: field.width}"
                   >
@@ -63,6 +65,7 @@
                 </template>
                 <template v-else>
                   <td :class="bodyClass('vuetable-td-'+field.name, field)"
+                    :data-title="field.title"
                     :key="fieldIndex"
                     :style="{width: field.width}"
                     v-html="renderNormalField(field, item)"
